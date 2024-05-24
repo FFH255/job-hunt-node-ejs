@@ -4,12 +4,13 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon --legacy-watch ./src/index.js"
+    "start": "nodemon --legacy-watch -r dotenv/config ./src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "nodemon": "^3.1.0"

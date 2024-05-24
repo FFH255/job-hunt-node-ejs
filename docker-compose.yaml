@@ -21,6 +21,8 @@ services:
     restart: always
     ports:
       - "3306:3306"
+    logging:
+      driver: none
     networks:
       - local-network
   phpmyadmin:
@@ -31,6 +33,8 @@ services:
     env_file:
       - .env
     restart: always
+    logging:
+      driver: none
     ports:
       - "8090:80"
     environment:
