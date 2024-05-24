@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  node-server:
+    container_name: node-server
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./src:/app/src
