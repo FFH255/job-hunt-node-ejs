@@ -1,9 +1,9 @@
 -- Данные для таблицы `users`
 INSERT INTO `users` (`login`, `password`, `role`) VALUES
-('ivanov', 'ivanov123', 1),
-('petrov', 'petrov456', 1),
-('sidorov', 'sidorov789', 2),
-('smirnova', 'smirnova321', 2);
+('user1', 'user1', 1),
+('user2', 'user2', 1),
+('admuser1', 'admuser1', 2),
+('admuser2', 'admuser2', 2);
 
 -- Данные для таблицы `vacancies`
 INSERT INTO `vacancies` (`title`, `company`, `employment`, `experience_from`, `experience_to`, `city`, `salary_from`, `salary_to`, `description`, `employer_id`) VALUES
