@@ -27,6 +27,12 @@ html {
   min-height: 100vh;
 }
 
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
 a {
   text-decoration: none;
   color: inherit;

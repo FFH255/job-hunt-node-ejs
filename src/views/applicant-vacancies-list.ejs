@@ -2,17 +2,43 @@
 <% if (vacancies.length === 0) { %>
   <h2 class="placeholder">Нет доступных вакансий</h2>
 <% } else { %>
-  <div class="wrapper">
-    <div class="filter">
-      <span>Занятость:</span>
-      <form id="employment-form">
-        <input id="employment-filter" class="input _border_main" />
-      </form>
-    </div>
+  <div class="page">
     <div class='list' id="vacancy-list">
-     <% vacancies.forEach(vacancy => { %>
-      vacancy
-     <% }) %>
+      <% vacancies.forEach(vacancy => { %>
+        <div class='item item_hoverable _border_sub'>
+          <h3 class='item__title'><%= vacancy.title %></h3>
+          <span><%= vacancy.company %></span>
+          <span><%= vacancy.city %></span>
+          <span><%= vacancy.employment %></span>
+          <span>Опыт работы:
+            <% if (vacancy.experienceFrom !== null) { %>
+              от <%= vacancy.experienceFrom %>
+            <% } %>
+            <% if (vacancy.experienceTo !== null) { %>
+              до <%= vacancy.experienceTo %>
+            <% } %>
+            <% if (vacancy.experienceFrom === null && vacancy.experienceTo === null) { %>
+              не указано
+            <% } %>
+          </span>
+          <span>Оклад:
+            <% if (vacancy.salaryFrom !== null) { %>
+             от <%= vacancy.salaryFrom %>
+            <% } %>
+            <% if (vacancy.salaryTo !== null) { %>
+              до <%= vacancy.salaryTo %>
+             <% } %>
+             <% if (vacancy.salaryFrom === null && vacancy.salaryTo === null) { %>
+              не указано  
+             <% } %>
+          </span>
+          <div class='item__buttons'>
+            <button class='button button_theme_positive'>
+              Откликнуться
+            </button>
+          </div>
+        </div>
+      <% }) %>
     </div>
   </div>
 <% } %>
