@@ -1,6 +1,19 @@
 const express = require("express")
-
 const path = require("path")
+const mysql = require("mysql2")
+
+const connection = mysql.createConnection({
+  host: process.env.MY_SQL_HOST,
+  database: process.env.MYSQL_DATABASE,
+  user: process.env.MYSQL_ROOT,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+})
+
+connection.connect((err) => {
+  if (err) {
+    throw err
+  }
+})
 
 const app = express()
 
