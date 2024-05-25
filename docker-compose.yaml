@@ -20,7 +20,7 @@ services:
       - .env
     restart: always
     ports:
-      - "3306:3306"
+      - "3308:3308"
     logging:
       driver: none
     networks:
@@ -36,7 +36,7 @@ services:
     logging:
       driver: none
     ports:
-      - "8090:80"
+      - "9090:90"
     environment:
       PMA_HOST: db
     networks:
