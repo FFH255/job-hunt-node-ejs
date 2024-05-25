@@ -2,7 +2,7 @@ const {
   VacanciesRepository,
 } = require("../core/repositories/vacancies-repository")
 
-exports.VacanciesController = class VacanciesController {
+exports.ApplicantController = class ApplicantController {
   /**
    * @param {VacanciesRepository} vacanciesRepository
    */
@@ -10,7 +10,7 @@ exports.VacanciesController = class VacanciesController {
     this.vacanciesRepository = vacanciesRepository
   }
 
-  async getVacanciesForApplicant(req, res) {
+  async getVacancies(req, res) {
     const vacancies = await this.vacanciesRepository.getVacancies()
     res.render("applicant-vacancies-list", { vacancies: vacancies })
   }

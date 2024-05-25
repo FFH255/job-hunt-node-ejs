@@ -5,7 +5,7 @@ const { UsersRepository } = require("./core/repositories/users-repository")
 const {
   VacanciesRepository,
 } = require("./core/repositories/vacancies-repository.js")
-const { VacanciesController } = require("./controllers/vacancies-controller.js")
+const { ApplicantController } = require("./controllers/applicant-controller.js")
 
 const connection = mysql
   .createConnection({
@@ -17,7 +17,7 @@ const connection = mysql
   .promise()
 
 const vacanciesRepository = new VacanciesRepository(connection)
-const vacanciesController = new VacanciesController(vacanciesRepository)
+const applicantController = new ApplicantController(vacanciesRepository)
 
 const app = express()
 
@@ -27,9 +27,7 @@ app.use(express.static("src/public"))
 
 app.set("view engine", "ejs")
 
-app.get("/", (req, res) =>
-  vacanciesController.getVacanciesForApplicant(req, res)
-)
+app.get("/", (req, res) => applicantController.getVacancies(req, res))
 
 app.listen(process.env.PORT, () => {
   console.log("NODE-SERVER IS LISTENNING ON PORT", process.env.PORT)
