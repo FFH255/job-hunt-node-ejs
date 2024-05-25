@@ -1,7 +1,6 @@
 const express = require("express")
 const path = require("path")
 const mysql = require("mysql2")
-const { UsersRepository } = require("./core/repositories/users-repository")
 
 const connection = mysql
   .createConnection({
@@ -11,8 +10,6 @@ const connection = mysql
     password: process.env.MYSQL_ROOT_PASSWORD,
   })
   .promise()
-
-const usersRepository = new UsersRepository(connection)
 
 const app = express()
 
