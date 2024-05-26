@@ -8,6 +8,12 @@ const {
 } = require("./core/repositories/replies-repository.js")
 const { ApplicantController } = require("./controllers/applicant.js")
 const { AuthController } = require("./controllers/auth.js")
+const {
+  GetVacanciesForApplicant,
+} = require("./core/use-cases/get-vacancies-for-applicant.js")
+const {
+  GetVacancyForApplicant,
+} = require("./core/use-cases/get-vacancy-for-applicant.js")
 
 const connection = mysql
   .createConnection({
@@ -24,9 +30,21 @@ const vacanciesRepository = new VacanciesRepository(connection)
 
 const repliesRepository = new RepliesRepository(connection)
 
-exports.applicantController = new ApplicantController(
-  vacanciesRepository,
-  repliesRepository
+const getVacanciesForApplicant = new GetVacanciesForApplicant(
+  repliesRepository,
+  vacanciesRepository
 )
 
-exports.authController = new AuthController(usersRepository)
+const getVacancyForApplicant = new GetVacancyForApplicant(
+  repliesRepository,
+  vacanciesRepository
+)
+
+exports.applicantController = new ApplicantController(
+  vacanciesRepository,
+  repliesRepository,
+  getVacanciesForApplicant,
+  getVacancyForApplicant
+)
+
+exports.authController = new AuthController(usersRepository) 

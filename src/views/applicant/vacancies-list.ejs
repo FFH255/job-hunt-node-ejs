@@ -33,7 +33,10 @@
              <% } %>
           </span>
           <div class='item__buttons'>
-            <button data-id="<%= vacancy.id %>" class='reply-button button button_theme_positive'>
+            <button 
+              data-id="<%= vacancy.id %>" 
+              class='reply-button button button_theme_positive' 
+              <%= vacancy.isReplied ? 'disabled' : '' %>>
               Откликнуться
             </button>
           </div>

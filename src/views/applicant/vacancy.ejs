@@ -11,7 +11,13 @@
     <span>от <%= vacancy.salaryFrom %> до <%= vacancy.salaryTo %></span>
     <span><% vacancy.description %></span>
     <div class='item__buttons'>
-      <button data-id="<%= vacancy.id %>" id="reply-button" class="button button_theme_positive">Откликнуться</button>
+      <button 
+        data-id="<%= vacancy.id %>" 
+        id="reply-button" 
+        class="button button_theme_positive" 
+        <%= vacancy.isReplied ? 'disabled' : '' %>>
+        Откликнуться
+      </button>
     </div>
   </div>
 <% } %>
