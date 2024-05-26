@@ -3,6 +3,9 @@ const { UsersRepository } = require("./core/repositories/users-repository")
 const {
   VacanciesRepository,
 } = require("./core/repositories/vacancies-repository.js")
+const {
+  RepliesRepository,
+} = require("./core/repositories/replies-repository.js")
 const { ApplicantController } = require("./controllers/applicant.js")
 const { AuthController } = require("./controllers/auth.js")
 
@@ -19,6 +22,11 @@ const usersRepository = new UsersRepository(connection)
 
 const vacanciesRepository = new VacanciesRepository(connection)
 
-exports.applicantController = new ApplicantController(vacanciesRepository)
+const repliesRepository = new RepliesRepository(connection)
+
+exports.applicantController = new ApplicantController(
+  vacanciesRepository,
+  repliesRepository
+)
 
 exports.authController = new AuthController(usersRepository)

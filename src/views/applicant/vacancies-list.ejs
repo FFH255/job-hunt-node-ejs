@@ -33,7 +33,7 @@
              <% } %>
           </span>
           <div class='item__buttons'>
-            <button class='button button_theme_positive'>
+            <button data-id="<%= vacancy.id %>" class='reply-button button button_theme_positive'>
               Откликнуться
             </button>
           </div>
@@ -46,6 +46,20 @@
   $('.vacancy').on('click', function() {
     const vacancyId = $(this).data('id');
     window.location.href = 'vacancies/' + vacancyId;
+  });
+
+  $('.reply-button').on('click', function(e) {
+    e.stopPropagation();
+
+    const vacancyId = $(this).data('id');
+
+    $.ajax({
+      url: `/applicant/reply?vacancy-id=${vacancyId}`,
+      method: 'post',
+      success: () => {
+        $(this).prop('disabled', true);
+      },
+    })
   });
 </script>
 <%- include('../layouts/with-header/footer.ejs') %>

@@ -25,6 +25,7 @@ exports.RepliesRepository = class RepliesRepository {
     }
     if (vacancyId !== null) {
       sql += " AND r.vacancy_id = ?"
+      params.push(vacancyId)
     }
 
     const [rows] = await this.mysql.query(sql, params)
@@ -49,7 +50,7 @@ exports.RepliesRepository = class RepliesRepository {
       "INSERT INTO replies (user_id, vacancy_id, created_at) VALUES (?, ?, NOW())"
     const params = [applicantId, vacancyId]
     const [{ insertId }] = await this.mysql.query(sql, params)
-    const [reply] = this.getReplies(insertId)
+    const [reply] = await this.getReplies(insertId)
     return reply
   }
 

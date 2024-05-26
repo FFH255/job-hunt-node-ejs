@@ -30,10 +30,6 @@ app.use("/auth", authRouter)
 
 app.use("/applicant", applicantRouter)
 
-app.get("/", (req, res) => {
-  res.send("hello world")
-})
-
 app.listen(process.env.PORT, () => {
   console.log("NODE-SERVER IS LISTENNING ON PORT", process.env.PORT)
 })
