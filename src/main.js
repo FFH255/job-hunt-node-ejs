@@ -15,8 +15,10 @@ const connection = mysql
   })
   .promise()
 
+const usersRepository = new UsersRepository(connection)
+
 const vacanciesRepository = new VacanciesRepository(connection)
 
 exports.applicantController = new ApplicantController(vacanciesRepository)
 
-exports.authController = new AuthController()
+exports.authController = new AuthController(usersRepository)

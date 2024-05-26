@@ -1,0 +1,29 @@
+<%- include('../layouts/full-size/header.ejs') %>
+<div class="register-page">
+  <div class="register-page__content">
+    <h1 class="form-title">Регистрация</h1>
+    <form class="form" method="post">
+      <div class="form__item form__item_direction_col">
+        <label>Логин</label>
+        <input id="login" name="username" class="input _border_main" required />
+      </div>
+
+      <div class="form__item form__item_direction_col">
+        <label>Пароль</label>
+        <input name="password" type="password" class="input _border_main" required />
+      </div>
+
+      <div class="form__item form__item_direction_col">
+        <label>Роль</label>
+        <select name="role" class="select _border_main">
+          <option value="1">Соискатель</option>
+          <option value="2">Работадатель</option>
+        </select>
+      </div>
+      <button class="button button_theme_positive">Регистрация</button>
+    </form>
+    <span id="error-message" class="form-error-message"></span>
+    <a href="./login.php" class="form-link">Вход</a>
+  </div>
+</div>
+<%- include('../layouts/full-size/footer.ejs') %>
