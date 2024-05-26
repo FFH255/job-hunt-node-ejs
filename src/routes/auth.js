@@ -11,4 +11,6 @@ router.get("/register", (req, res) => authController.getRegister(req, res))
 
 router.post("/register", (req, res) => authController.postRegister(req, res))
 
+router.get("/logout", (req, res) => authController.logout(req, res))
+
 module.exports = router

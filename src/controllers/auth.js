@@ -25,7 +25,8 @@ exports.AuthController = class AuthController {
       return
     }
     req.session.user = user
-    res.redirect("/")
+    const url = user.role === 1 ? "/applicant/vacancies" : "/employer/vacancies"
+    res.redirect(url)
   }
 
   async getRegister(req, res) {
@@ -44,6 +45,12 @@ exports.AuthController = class AuthController {
       return
     }
     req.session.user = user
-    res.redirect("/")
+    const url = user.role === 1 ? '/applicant/vacancies' : '/employer/vacancies'
+    res.redirect(url)
+  }
+
+  logout(req, res) {
+    req.session.user = undefined;
+    res.redirect('/auth/login')
   }
 }
