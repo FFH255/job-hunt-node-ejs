@@ -18,4 +18,8 @@ router.post("/reply", (req, res) => applicantController.replyVacancy(req, res))
 
 router.get("/replies", (req, res) => applicantController.getReplies(req, res))
 
+router.delete("/replies/:id/delete", (req, res) =>
+  applicantController.deleteReply(req, res)
+)
+
 module.exports = router

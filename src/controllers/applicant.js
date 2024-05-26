@@ -79,4 +79,14 @@ exports.ApplicantController = class ApplicantController {
     const replies = await this.repliesRepository.getReplies(null, applicantId)
     res.render("applicant/replies-list", { replies: replies })
   }
+
+  async deleteReply(req, res) {
+    const id = parseInt(req.params["id"])
+    if (isNaN(id)) {
+      res.sendStatus(400)
+      return
+    }
+    await this.repliesRepository.deleteReply(id)
+    res.sendStatus(200)
+  }
 }

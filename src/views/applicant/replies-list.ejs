@@ -24,7 +24,7 @@ $('.delete-reply-button').on('click', function() {
   const item = $(this).closest('.item');
 
   $.ajax({
-    url: `/api/delete-reply.php?id=${id}`,
+    url: `/applicant/replies/${id}/delete`,
     method: 'delete',
     success: () => {
       item.remove();
