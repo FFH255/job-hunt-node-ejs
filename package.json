@@ -2,9 +2,9 @@
   "name": "job-hunt-node-ejs",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/main.js",
+  "main": "./src/server.js",
   "scripts": {
-    "start": "nodemon --legacy-watch -r dotenv/config ./src/main.js"
+    "start": "nodemon --legacy-watch -r dotenv/config ./src/server.js"
   },
   "keywords": [],
   "author": "",

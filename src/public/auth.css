@@ -1,0 +1,10 @@
+.login-page {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page__content {
+  display: grid;
+  grid-template-rows: auto auto;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Hunt</title>
+    <link href="/main.css" rel="stylesheet" />
+    <style>
+      .main {
+        margin-top: 4rem;
+        padding: 1rem 3rem;
+        width: 60vw;
+        min-height: 100vh;
+        margin-inline: auto; 
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 5rem;
+        gap: 5rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: var(--background-1000);
+        z-index: 1000;
+      }
+
+      .header__sitename {
+        color: var(--main);
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .header__navigation {
+        display: flex;
+        gap: 1.3rem;
+      }
+
+      .header__link {
+        font-size: 1.1rem;
+        font-weight: 400;
+      }
+
+      .header__link:hover {
+        color: var(--contrast); 
+      }
+
+      .header__link_active {
+        color: var(--contrast); 
+      }
+
+      .header__actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: nowrap;
+      }
+
+      .logout-button {
+        cursor: pointer;
+      }
+
+      .logout-button:hover {
+        color: var(--contrast);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <h3 class="header__sitename">Job Hunt</h3>
+      <nav class="header__navigation">
+      </nav>
+      <div class="header__actions">
+        <span>Пользователь: </span>
+        <span id="logout-button" class="logout-button">Выйти</span>
+      </div>
+    </header>
+
+    <main class="main">

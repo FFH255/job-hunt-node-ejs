@@ -1,11 +1,10 @@
-const express = require("express")
-const path = require("path")
 const mysql = require("mysql2")
 const { UsersRepository } = require("./core/repositories/users-repository")
 const {
   VacanciesRepository,
 } = require("./core/repositories/vacancies-repository.js")
 const { ApplicantController } = require("./controllers/applicant-controller.js")
+const { AuthController } = require("./controllers/auth.js")
 
 const connection = mysql
   .createConnection({
@@ -17,18 +16,7 @@ const connection = mysql
   .promise()
 
 const vacanciesRepository = new VacanciesRepository(connection)
-const applicantController = new ApplicantController(vacanciesRepository)
 
-const app = express()
+exports.applicantController = new ApplicantController(vacanciesRepository)
 
-app.set("views", path.join(__dirname, "/views"))
-
-app.use(express.static("src/public"))
-
-app.set("view engine", "ejs")
-
-app.get("/", (req, res) => applicantController.getVacancies(req, res))
-
-app.listen(process.env.PORT, () => {
-  console.log("NODE-SERVER IS LISTENNING ON PORT", process.env.PORT)
-})
+exports.authController = new AuthController()
