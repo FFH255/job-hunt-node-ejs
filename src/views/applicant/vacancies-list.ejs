@@ -5,7 +5,7 @@
   <div class="page">
     <div class='list' id="vacancy-list">
       <% vacancies.forEach(vacancy => { %>
-        <div class='item item_hoverable _border_sub'>
+        <div data-id="<%= vacancy.id %>" class='vacancy item item_hoverable _border_sub'>
           <h3 class='item__title'><%= vacancy.title %></h3>
           <span><%= vacancy.company %></span>
           <span><%= vacancy.city %></span>
@@ -42,4 +42,10 @@
     </div>
   </div>
 <% } %>
+<script>
+  $('.vacancy').on('click', function() {
+    const vacancyId = $(this).data('id');
+    window.location.href = 'vacancies/' + vacancyId;
+  });
+</script>
 <%- include('../layouts/with-header/footer.ejs') %>

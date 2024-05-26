@@ -10,4 +10,8 @@ router.get("/vacancies", (req, res) =>
   applicantController.getVacancies(req, res)
 )
 
+router.get("/vacancies/:id", (req, res) =>
+  applicantController.getVacancy(req, res)
+)
+
 module.exports = router

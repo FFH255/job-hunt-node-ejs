@@ -1,0 +1,18 @@
+<%- include('../layouts/with-header/header.ejs') %>
+<% if (!vacancy) { %>
+  <h2 class="placeholder">Вакансия не найдена</h2>
+<% } else { %>
+  <div class='item'>
+    <h2 class='item__title'><%= vacancy.title %></h2>
+    <span><%= vacancy.company %></span>
+    <span><%= vacancy.city %></span>
+    <span><%= vacancy.employment %></span>
+    <span>от <%= vacancy.experienceFrom %> до <%= vacancy.experienceTo %></span>
+    <span>от <%= vacancy.salaryFrom %> до <%= vacancy.salaryTo %></span>
+    <span><% vacancy.description %></span>
+    <div class='item__buttons'>
+      <button id="reply-button" class="button button_theme_positive">Откликнуться</button>
+    </div>
+  </div>
+<% } %>
+<%- include('../layouts/with-header/footer.ejs') %>
