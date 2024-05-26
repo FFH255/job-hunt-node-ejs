@@ -19,7 +19,6 @@ exports.AuthController = class AuthController {
       return
     }
     const [user] = await this.usersRepository.getUsers(null, username, password)
-    console.log(user)
     if (!user) {
       res.redirect("./login")
       return

@@ -40,7 +40,6 @@ exports.ApplicantController = class ApplicantController {
 
   async getVacancy(req, res) {
     const id = parseInt(req.params["id"])
-    console.log("vacancy id", id)
     if (isNaN(id)) {
       res.sendStatus(400)
       res.render("applicant/vacancy", { vacancy: null })
@@ -69,5 +68,15 @@ exports.ApplicantController = class ApplicantController {
     }
     await this.repliesRepository.createReply(applicantId, vacancyId)
     res.sendStatus(200)
+  }
+
+  async getReplies(req, res) {
+    const applicantId = parseInt(req.session.user?.id)
+    if (isNaN(applicantId)) {
+      res.render("applicant/replies-list", { replies: [] })
+      return
+    }
+    const replies = await this.repliesRepository.getReplies(null, applicantId)
+    res.render("applicant/replies-list", { replies: replies })
   }
 }

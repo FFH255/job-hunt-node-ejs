@@ -11,7 +11,7 @@ exports.RepliesRepository = class RepliesRepository {
    * @param {number | null} vacancyId
    * @return {Promise<Reply[]>}
    */
-  async getReplies(id, applicantId, vacancyId) {
+  async getReplies(id = null, applicantId = null, vacancyId = null) {
     let sql =
       "SELECT r.id, r.created_at, v.title, v.company FROM replies as r JOIN vacancies as v WHERE r.vacancy_id = v.id"
     const params = []

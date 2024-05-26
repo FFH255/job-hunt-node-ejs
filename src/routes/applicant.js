@@ -16,4 +16,6 @@ router.get("/vacancies/:id", (req, res) =>
 
 router.post("/reply", (req, res) => applicantController.replyVacancy(req, res))
 
+router.get("/replies", (req, res) => applicantController.getReplies(req, res))
+
 module.exports = router

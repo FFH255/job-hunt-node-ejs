@@ -1,0 +1,35 @@
+<%- include('../layouts/with-header/header.ejs') %>
+<div>
+  <% if (replies.length === 0) { %>
+    <h2 class='placeholder'>Вы еще ни разу не откликнулись</h2>
+  <% } else { %>
+    <div class='list'>
+      <% replies.forEach(reply => { %>
+        <div class='item _border_sub'>
+          <h3 class='item__title'><%= reply.title %></h3>
+          <span><%= reply.company %></span>
+          <span><%= reply.date %></span>
+          <div class='item__buttons'>
+            <button data-id="<%= reply.id %>" class='delete-reply-button button button_theme_danger'>Удалить</button>
+          </div>
+        </div>
+      <% }) %>
+  </div>
+  <% } %>
+</div>
+
+<script>
+$('.delete-reply-button').on('click', function() {
+  const id = $(this).data('id');
+  const item = $(this).closest('.item');
+
+  $.ajax({
+    url: `/api/delete-reply.php?id=${id}`,
+    method: 'delete',
+    success: () => {
+      item.remove();
+    },
+  });
+});
+</script>
+<%- include('../layouts/with-header/footer.ejs') %> 

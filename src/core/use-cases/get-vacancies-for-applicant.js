@@ -26,7 +26,6 @@ exports.GetVacanciesForApplicant = class GetVacanciesForApplicant {
           vacancy.id
         )
         const isReplied = !!replies.length
-        console.log(vacancy.title, replies, isReplied)
         return new ApplicantVacancy(
           vacancy.id,
           vacancy.title,
