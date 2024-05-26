@@ -3,7 +3,7 @@ const { UsersRepository } = require("./core/repositories/users-repository")
 const {
   VacanciesRepository,
 } = require("./core/repositories/vacancies-repository.js")
-const { ApplicantController } = require("./controllers/applicant-controller.js")
+const { ApplicantController } = require("./controllers/applicant.js")
 const { AuthController } = require("./controllers/auth.js")
 
 const connection = mysql

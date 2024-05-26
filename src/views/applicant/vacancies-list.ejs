@@ -1,4 +1,4 @@
-<%- include('layout/header') %>
+<%- include('../layouts/with-header/header.ejs') %>
 <% if (vacancies.length === 0) { %>
   <h2 class="placeholder">Нет доступных вакансий</h2>
 <% } else { %>
@@ -42,4 +42,4 @@
     </div>
   </div>
 <% } %>
-<%- include('layout/footer') %>
+<%- include('../layouts/with-header/footer.ejs') %>

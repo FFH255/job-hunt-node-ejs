@@ -12,6 +12,6 @@ exports.ApplicantController = class ApplicantController {
 
   async getVacancies(req, res) {
     const vacancies = await this.vacanciesRepository.getVacancies()
-    res.render("applicant-vacancies-list", { vacancies: vacancies })
+    res.render("applicant/vacancies-list", { vacancies: vacancies })
   }
 }

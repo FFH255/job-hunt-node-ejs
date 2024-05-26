@@ -3,6 +3,7 @@ const path = require("path")
 const session = require("express-session")
 const bodyParser = require("body-parser")
 const authRouter = require("./routes/auth")
+const applicantRouter = require("./routes/applicant")
 
 const app = express()
 
@@ -26,6 +27,8 @@ app.use(express.static("src/public"))
 app.set("view engine", "ejs")
 
 app.use("/auth", authRouter)
+
+app.use("/applicant", applicantRouter)
 
 app.get("/", (req, res) => {
   res.send("hello world")
