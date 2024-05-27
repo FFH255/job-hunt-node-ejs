@@ -1,0 +1,48 @@
+<div class="form__item form__item_direction_col">
+  <label>Заголовок:</label>
+  <input name="title" type="text" class="input _border_main" required value="<%= vacancy?.title %>" />
+</div>
+
+<div class="form__item form__item_direction_col">
+  <label>Компания:</label>
+  <input name="company" type="text" class="input _border_main" value="<%= vacancy?.company %>" />
+</div>
+
+<div class="form__item form__item_direction_col">
+  <label>Занятость:</label>
+  <input name="employment" type="text" class="input _border_main" required value="<%= vacancy?.employment %>" />
+</div>
+
+<div class="form__item form__item_direction_row">
+  <div class="form__item form__item_direction_col">
+    <label>Отып работы от:</label>
+    <input name="experience_from" type="number" class="input _border_main" value="<%= vacancy?.experienceFrom %>" />
+  </div>
+
+  <div class="form__item form__item_direction_col">
+    <label>Опыт работы до:</label>
+    <input name="experience_to" type="number" class="input _border_main" value="<%= vacancy?.experienceTo %>" />
+  </div>
+</div>
+
+<div class="form__item form__item_direction_col">
+  <label>Город:</label>
+  <input name="city" type="text" class="input _border_main" value="<%= vacancy?.city %>" />
+</div>
+
+<div class="form__item form__item_direction_row">
+  <div class="form__item form__item_direction_col">
+    <label>Зарплата от:</label>
+    <input name="salary_from" type="number" class="input _border_main" value="<%= vacancy?.salaryFrom %>" />
+  </div>
+
+  <div class="form__item form__item_direction_col">
+    <label>Зарплата до:</label>
+    <input name="salary_to" type="number" class="input _border_main" value="<%= vacancy?.salaryTo %>" />
+  </div>
+</div>
+
+<div class="form__item form__item_direction_col">
+  <label>Описание:</label>
+  <textarea name="description" class="input _border_main" required><%= vacancy?.description %></textarea>
+</div>

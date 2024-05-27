@@ -44,9 +44,49 @@ exports.EmployerController = class EmployerController {
     res.render("employer/vacancy", { vacancy: vacancy })
   }
 
-  async postVacancy() {}
+  async createVacancyPage(req, res) {
+    res.render("employer/create-vacancy")
+  }
 
-  async editVacancy() {}
+  async postVacancy(req, res) {
+    const {
+      title,
+      company,
+      employment,
+      experienceFrom,
+      exrepienceTo,
+      city,
+      salaryFrom,
+      salaryTo,
+      description,
+    } = req.body
+    if (!title || !employment || !description) {
+      res.redirect("/employer/create-vacancy")
+      return
+    }
+    const employerId = parseInt(req.session.user?.id)
+    if (isNaN(employerId)) {
+      res.redirect("/employer/create-vacancy")
+      return
+    }
+    await this.vacanciesRepository.createVacancy(
+      {
+        title,
+        company,
+        employment,
+        experienceFrom,
+        exrepienceTo,
+        city,
+        salaryFrom,
+        salaryTo,
+        description,
+      },
+      employerId
+    )
+    res.redirect("/employer/vacancies")
+  }
 
-  async deleteVacancy() {}
+  async editVacancy(req, res) {}
+
+  async deleteVacancy(req, res) {}
 }

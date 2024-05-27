@@ -96,9 +96,10 @@ exports.VacanciesRepository = class VacanciesRepository {
   /**
    *
    * @param {VacancyFormValue} draft
+   * @param {number} employerId
    * @return {Promise<Vacancy>}
    */
-  async createVacancy(draft) {
+  async createVacancy(draft, employerId) {
     const sql =
       "INSERT INTO vacancies (title, company, employment, experience_from, experience_to, city, salary_from, salary_to, description, employer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     const params = [
@@ -111,10 +112,10 @@ exports.VacanciesRepository = class VacanciesRepository {
       draft.salaryFrom,
       draft.salaryTo,
       draft.description,
-      draft.employerId,
+      employerId,
     ]
     const [{ insertId }] = await this.mysql.query(sql, params)
-    const [vacancy] = this.getVacancies(insertId)
+    const [vacancy] = await this.getVacancies(insertId)
     return vacancy
   }
 
