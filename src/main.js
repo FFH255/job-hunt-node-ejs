@@ -14,6 +14,7 @@ const {
 const {
   GetVacancyForApplicant,
 } = require("./core/use-cases/get-vacancy-for-applicant.js")
+const { EmployerController } = require("./controllers/employer.js")
 
 const connection = mysql
   .createConnection({
@@ -46,5 +47,7 @@ exports.applicantController = new ApplicantController(
   getVacanciesForApplicant,
   getVacancyForApplicant
 )
+
+exports.employerController = new EmployerController(vacanciesRepository)
 
 exports.authController = new AuthController(usersRepository) 

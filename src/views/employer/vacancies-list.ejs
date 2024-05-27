@@ -1,0 +1,19 @@
+<%- include('../layouts/with-header/header.ejs') %>
+<% if (vacancies.length === 0) { %>
+  <h2 class="placeholder">У вас нет созданных вакансий</h2>
+<% } else { %>
+  <div class='list'>
+    <% vacancies.forEach(vacancy => { %>
+      <div data-id="<%= vacancy.id %>" class='vacancy item item_hoverable _border_sub'>
+        <h3 class='item__title'><%= vacancy.title %></h3>
+      </div>
+    <% }) %>
+  </div>  
+  <script>
+    $('.vacancy').on('click', function() {
+      const vacancyId = $(this).data('id');
+      window.location.href = `/employer/vacancies/${vacancyId}`;
+    });
+  </script>
+<% } %>
+<%- include('../layouts/with-header/footer.ejs') %>

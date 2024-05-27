@@ -4,6 +4,7 @@ const session = require("express-session")
 const bodyParser = require("body-parser")
 const authRouter = require("./routes/auth")
 const applicantRouter = require("./routes/applicant")
+const employerRouter = require("./routes/employer")
 
 const app = express()
 
@@ -15,7 +16,7 @@ app.use(
 )
 app.use(
   session({
-    secret: "you secret key",
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
   })
 )
@@ -30,6 +31,8 @@ app.use("/auth", authRouter)
 
 app.use("/applicant", applicantRouter)
 
+app.use("/employer", employerRouter)
+
 app.listen(process.env.PORT, () => {
-  console.log("NODE-SERVER IS LISTENNING ON PORT", process.env.PORT)
+  console.log("Node Server Is Listenning On Port:", process.env.PORT)
 })

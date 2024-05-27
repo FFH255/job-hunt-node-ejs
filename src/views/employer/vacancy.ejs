@@ -1,0 +1,36 @@
+<%- include('../layouts/with-header/header.ejs') %>
+<% if (!vacancy) { %>
+  <h2 class="placeholder">Вакансия не найдена</h2>
+<% } else { %>
+  <div data-id="<%= vacancy.id %>" id='vacancy' class='item'>
+    <h2 class='item__title'><%= vacancy.title %></h2>
+    <span><%= vacancy.company %></span>
+    <span><%= vacancy.city %></span>
+    <span><%= vacancy.employment %></span>
+    <span>от <%= vacancy.experienceFrom %> до <%= vacancy.experienceTo %></span>
+    <span>от <%= vacancy.salaryFrom %> до <%= vacancy.salaryTo %></span>
+    <span><%= vacancy.description %></span>
+    <div class='item__buttons'>
+      <button id="edit-vacancy-button" class="button button_theme_neutral">Редатировать</button>
+      <button id="delete-vacancy-button" class="button button_theme_danger">Удалить</button>
+    </div>
+  </div>
+
+  <script>
+    const id = $('#vacancy').data('id');
+    $('#delete-vacancy-button').on('click', function() {
+      $.ajax({
+        url: `/api/delete-vacancy.php?id=${id}`,
+        method: 'get',
+        success: () => {
+          window.location = '/employer-vacancies.php';
+        },
+      })
+    });
+    
+    $('#edit-vacancy-button').on('click', function() {
+      window.location = `/edit-vacancy.php?id=${id}`;
+    })
+    </script>
+<% } %>
+<%- include('../layouts/with-header/footer.ejs') %>
