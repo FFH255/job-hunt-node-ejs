@@ -23,13 +23,13 @@
         url: `/api/delete-vacancy.php?id=${id}`,
         method: 'get',
         success: () => {
-          window.location = '/employer-vacancies.php';
+          window.location = `/employer/vacancies/${id}/edit`;
         },
       })
     });
     
     $('#edit-vacancy-button').on('click', function() {
-      window.location = `/edit-vacancy.php?id=${id}`;
+      window.location = `${id}/edit`;
     })
     </script>
 <% } %>

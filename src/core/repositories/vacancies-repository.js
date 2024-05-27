@@ -122,9 +122,10 @@ exports.VacanciesRepository = class VacanciesRepository {
   /**
    * @param {VacancyFormValue} draft
    * @param {number} id
+   * @param {number} employerId
    * @return {Promise<Vacancy>}
    */
-  async updateVacancy(draft, id) {
+  async updateVacancy(draft, id, employerId) {
     const sql = `UPDATE vacancies SET 
     title = ?, 
     company = ?, 
@@ -135,7 +136,8 @@ exports.VacanciesRepository = class VacanciesRepository {
     salary_from = ?, 
     salary_to = ?, 
     description = ? 
-    WHERE id = ?`
+    WHERE id = ? 
+    AND employer_id = ?`
 
     const params = [
       draft.title,
@@ -148,6 +150,7 @@ exports.VacanciesRepository = class VacanciesRepository {
       draft.salaryTo,
       draft.description,
       id,
+      employerId,
     ]
 
     await this.mysql.query(sql, params)

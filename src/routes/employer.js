@@ -22,7 +22,11 @@ router.post("/create-vacancy", (req, res) =>
   employerController.postVacancy(req, res)
 )
 
-router.put("/vacancies/:id/edit", (req, res) =>
+router.get("/vacancies/:id/edit", (req, res) =>
+  employerController.editVacancyPage(req, res)
+)
+
+router.post("/vacancies/:id/edit", (req, res) =>
   employerController.editVacancy(req, res)
 )
 

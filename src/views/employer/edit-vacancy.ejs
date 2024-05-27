@@ -1,0 +1,7 @@
+<%- include('../layouts/with-header/header.ejs') %>
+<h1 class="form-title">Редактирование вакансии</h1>
+<form class="form" method="post">
+  <%- include('./vacancy-form.ejs', { vacancy: vacancy }) %>
+  <button class="button button_theme_positive" type="submit">Редактировать</button>
+</form>
+<%- include('../layouts/with-header/footer.ejs') %>
