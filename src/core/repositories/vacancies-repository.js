@@ -170,12 +170,13 @@ exports.VacanciesRepository = class VacanciesRepository {
   }
 
   /**
-   * @param {number} id
+   * @param {number} vacancyId
+   * @param {number} employerId
    * @return {Promise<void>}
    */
-  deleteVacancy(id) {
-    const sql = "DELETE FROM vacancies WHERE id = ?"
-    const params = [id]
+  deleteVacancy(vacancyId, employerId) {
+    const sql = "DELETE FROM vacancies WHERE id = ? AND employer_id = ?"
+    const params = [vacancyId, employerId]
     this.mysql.query(sql, params)
   }
 }

@@ -20,11 +20,11 @@
     const id = $('#vacancy').data('id');
     $('#delete-vacancy-button').on('click', function() {
       $.ajax({
-        url: `/api/delete-vacancy.php?id=${id}`,
-        method: 'get',
+        url: `/employer/vacancies/${id}/delete`,
+        method: 'delete',
         success: () => {
-          window.location = `/employer/vacancies/${id}/edit`;
-        },
+          window.location = '/employer/vacancies'
+        }
       })
     });
     

@@ -148,5 +148,18 @@ exports.EmployerController = class EmployerController {
     res.render("employer/edit-vacancy", { vacancy: vacancy })
   }
 
-  async deleteVacancy(req, res) {}
+  async deleteVacancy(req, res) {
+    const vacancyId = parseInt(req.params["id"])
+    if (isNaN(vacancyId)) {
+      res.sendStatus(400)
+      return
+    }
+    const employerId = parseInt(req.session.user?.id)
+    if (isNaN(employerId)) {
+      res.sendStatus(500)
+      return
+    }
+    await this.vacanciesRepository.deleteVacancy(vacancyId, employerId)
+    res.sendStatus(200)
+  }
 }
