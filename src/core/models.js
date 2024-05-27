@@ -29,6 +29,7 @@ exports.ApplicantVacancy = class ApplicantVacancy {
     employment,
     description,
     isReplied,
+    totalReplies,
     company = null,
     experienceFrom = null,
     experienceTo = null,
@@ -47,6 +48,7 @@ exports.ApplicantVacancy = class ApplicantVacancy {
     this.city = city
     this.salaryFrom = salaryFrom
     this.salaryTo = salaryTo
+    this.totalReplies = totalReplies
   }
 }
 

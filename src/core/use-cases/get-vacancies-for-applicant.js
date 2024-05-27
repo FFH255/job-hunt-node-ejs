@@ -25,6 +25,11 @@ exports.GetVacanciesForApplicant = class GetVacanciesForApplicant {
           applicantId,
           vacancy.id
         )
+        const totalReplies = await this.repliesRepository.getReplies(
+          null,
+          null,
+          vacancy.id
+        )
         const isReplied = !!replies.length
         return new ApplicantVacancy(
           vacancy.id,
@@ -32,6 +37,7 @@ exports.GetVacanciesForApplicant = class GetVacanciesForApplicant {
           vacancy.employment,
           vacancy.description,
           isReplied,
+          totalReplies.length,
           vacancy.company,
           vacancy.experienceFrom,
           vacancy.experienceTo,

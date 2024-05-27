@@ -32,6 +32,9 @@
               не указано  
              <% } %>
           </span>
+          <div>
+            Кол-во откликов: <span class="total-replies"><%= vacancy.totalReplies %></span>
+          </div>
           <div class='item__buttons'>
             <button 
               data-id="<%= vacancy.id %>" 
@@ -61,6 +64,9 @@
       method: 'post',
       success: () => {
         $(this).prop('disabled', true);
+        const totalRepliesSpan = $(this).closest('.vacancy').find('.total-replies')
+        const totalReplies = parseInt(totalRepliesSpan.text()) + 1
+        totalRepliesSpan.text(totalReplies)
       },
     })
   });
