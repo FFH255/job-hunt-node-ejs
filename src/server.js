@@ -33,6 +33,10 @@ app.use("/applicant", applicantRouter)
 
 app.use("/employer", employerRouter)
 
+app.get("*", (req, res) => {
+  res.redirect("/auth/login")
+})
+
 app.listen(process.env.PORT, () => {
   console.log("Node Server Is Listenning On Port:", process.env.PORT)
 })
